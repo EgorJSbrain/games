@@ -10,7 +10,7 @@ const SearchInput = memo(() => {
   const redirect = useGenerateSearchUrl();
   const location = useLocation();
   const debounce = useDebounce();
-  const { categoryId } = queryString.parse(location.search);
+  const { categoryId, search } = queryString.parse(location.search);
 
   const inputHandler = debounce((e: ChangeEvent<HTMLInputElement>) => {
     const searchValue = e.target.value;
@@ -22,7 +22,7 @@ const SearchInput = memo(() => {
   }, 300)
 
   return (
-    <Input iconLink="./public/search.svg" onChange={inputHandler} placeholder="Search game" />
+    <Input defaultValue={search ?? ''} iconLink="./public/search.svg" onChange={inputHandler} placeholder="Search game" />
   );
 });
 
