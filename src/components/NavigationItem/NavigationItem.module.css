@@ -1,0 +1,17 @@
+.item {
+  text-align: start;
+  white-space: pre;
+  padding: 8px 12px;
+  font-weight: var(--font-weight-bold);
+  color: var(--gray-color-1);
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: var(--gray-color-3);
+}
+
+.active {
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--green-light-color);
+}

@@ -1,0 +1,57 @@
+.wrapper {
+  display: flex;
+  padding: 12px 12px 24px 12px;
+  column-gap: 20px;
+  margin-bottom: 16px;
+}
+
+.wrapper:not(:last-child) {
+  border-bottom: 1px solid var(--gray-color-4);
+}
+
+img {
+  width: 160px;
+  height: 160px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.avatarWrapper {
+  display: flex;
+  justify-content: left;
+}
+
+.gameName {
+  text-align: start;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-bold);
+}
+
+.description {
+  text-align: start;
+  font-size: var(--font-size-sm);
+  margin-bottom: 8px;
+}
+
+.btnWrapper {
+  display: flex;
+  justify-content: end;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  img {
+    margin-bottom: 16px;
+  }
+
+  .avatarWrapper {
+    justify-content: center;
+  }
+}

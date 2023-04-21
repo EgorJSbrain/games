@@ -1,0 +1,31 @@
+.form {
+  width: 400px;
+  max-width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 130px;
+}
+
+.title {
+  color: var(--black-color);
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+  width: 400px;
+  max-width: 100%;
+}
+
+.link {
+  margin-top: 24px;
+  color: var(--green-color)
+}
