@@ -10,6 +10,7 @@ interface HeaderBlockProps {
 const HeaderBlock = ({ title, style }: HeaderBlockProps) => (
   <div className={cls.wrapper} style={style}>
     <p className={cls.title}>{title}</p>
+    <>1</>
   </div>
 );
 
