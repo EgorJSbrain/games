@@ -22,7 +22,12 @@ const SearchInput = memo(() => {
   }, 300)
 
   return (
-    <Input defaultValue={search ?? ''} iconLink="./public/search.svg" onChange={inputHandler} placeholder="Search game" />
+    <Input
+      defaultValue={search ?? ""}
+      iconLink="./public/search.svg"
+      placeholder="Search game"
+      onChange={inputHandler}
+    />
   );
 });
 

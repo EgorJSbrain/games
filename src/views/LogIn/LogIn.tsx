@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { LoginData } from "@/types/global";
@@ -14,12 +14,14 @@ import Alert from "@/components/Alert";
 import cls from './LogIn.module.css';
 
 const LogIn = () => {
-  const [data, setData] = useState<LoginData | null>(null);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const error = useAppSelector(authErrorSelector);
   const isLoading = useAppSelector(authLoadingSelector);
+
+  const [data, setData] = useState<LoginData | null>(null);
+
   const isDisableBtn = !data?.password || !data?.username || isLoading;
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
@@ -32,7 +34,7 @@ const LogIn = () => {
     }
   }
 
-  const inputHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const inputHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
 
@@ -40,11 +42,11 @@ const LogIn = () => {
       ...data,
       [name]: value
     })
-  };
+  }, [data]);
 
-  const onFocusHandler = () => {
+  const onFocusHandler = useCallback(() => {
     dispatch({ type: AUTH_FAILURE, payload: '' });
-  };
+  }, []);
 
   return (
     <div className={cls.wrapper}>
@@ -53,20 +55,20 @@ const LogIn = () => {
         <div className={cls.formContent}>
           <Input
             iconLink="./public/user.svg"
+            name="username"
+            placeholder="Username"
             onFocus={onFocusHandler}
             isError={!!error}
             onChange={inputHandler}
-            name="username"
-            placeholder="Username"
           />
           <Input
             type="password"
             iconLink="./public/lock.svg"
+            placeholder="Password"
             onFocus={onFocusHandler}
             isError={!!error}
             onChange={inputHandler}
             name="password"
-            placeholder="Password"
           />
           {error && <Alert message={error} statusType={AlertTypes.error} />}
         </div>
