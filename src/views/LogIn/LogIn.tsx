@@ -60,6 +60,7 @@ const LogIn = () => {
             placeholder="Username"
           />
           <Input
+            type="password"
             iconLink="./public/lock.svg"
             onFocus={onFocusHandler}
             isError={!!error}
