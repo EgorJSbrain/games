@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from "query-string";
 
@@ -24,12 +24,12 @@ const Navigation = memo(() => {
     dispatch(getCategories());
   }, []);
 
-  const navigationHandler = (category: number) => {
+  const navigationHandler = useCallback((category: number) => {
     redirect({
       search,
       categoryId: category === 0 ? undefined : category,
     })
-  }
+  }, [search])
 
   return (
     <div className={cls.wrapper}>

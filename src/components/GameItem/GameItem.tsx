@@ -17,6 +17,7 @@ const GameItem = ({ item }: GameItemProps) => {
     // @ts-ignore
     window.comeon.game.launch(item.code);
   }
+
   return (
     <div className={cls.wrapper}>
       <div className={cls.avatarWrapper}>

@@ -6,6 +6,7 @@ input {
   border: 2px solid var(--gray-color-4);
   box-sizing: border-box;
   padding-right: 42px;
+  color: var(--black-color)
 }
 
 .error {

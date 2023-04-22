@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 import { CategoryType } from "@/types/global";
 
 import cls from './NavigationItem.module.css';
@@ -9,14 +9,21 @@ interface NavigationItemProps {
   setNavigation: (id: number) => void;
 }
 
-const NavigationItem: FC<NavigationItemProps> = ({ item, isActive, setNavigation }) => {
-  const clickHandler = () => {
-    setNavigation(item.id);
-  }
+const NavigationItem = memo(
+  ({ item, isActive, setNavigation }: NavigationItemProps) => {
+    const clickHandler = () => {
+      setNavigation(item.id);
+    };
 
-  return (
-    <div onClick={clickHandler} className={`${cls.item} ${isActive ? cls.active : ''}`}>{item.name}</div>
-  )
-}
+    return (
+      <div
+        onClick={clickHandler}
+        className={`${cls.item} ${isActive ? cls.active : ""}`}
+      >
+        {item.name}
+      </div>
+    );
+  }
+);
 
 export default NavigationItem;
