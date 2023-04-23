@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import { LoginData } from "@/types/global";
 import { AlertTypes, ButtonColorType, ROUTES } from "@/constants/global";
@@ -16,6 +17,8 @@ import cls from './LogIn.module.css';
 const LogIn = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const error = useAppSelector(authErrorSelector);
   const isLoading = useAppSelector(authLoadingSelector);
@@ -50,25 +53,25 @@ const LogIn = () => {
 
   return (
     <div className={cls.wrapper}>
-      <h1 className={cls.title}>Login</h1>
+      <h1 className={cls.title}>{t("LogIn")}</h1>
       <form className={cls.form} onSubmit={submitHandler}>
         <div className={cls.formContent}>
           <Input
             iconLink="./public/user.svg"
             name="username"
-            placeholder="Username"
+            placeholder={t("userName")}
             onFocus={onFocusHandler}
             isError={!!error}
             onChange={inputHandler}
           />
           <Input
             type="password"
+            name="password"
             iconLink="./public/lock.svg"
-            placeholder="Password"
+            placeholder={t("password")}
             onFocus={onFocusHandler}
             isError={!!error}
             onChange={inputHandler}
-            name="password"
           />
           {error && <Alert message={error} statusType={AlertTypes.error} />}
         </div>
@@ -79,12 +82,12 @@ const LogIn = () => {
           style={{ marginTop: "24px" }}
           type="submit"
         >
-          Login
+          {t("LogIn")}
         </Button>
       </form>
 
       <NavLink className={cls.link} to={ROUTES.home}>
-        Go to About Us
+        {t("goTo", { where: "about us" })}
       </NavLink>
     </div>
   );

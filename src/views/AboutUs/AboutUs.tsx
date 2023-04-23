@@ -4,6 +4,7 @@ import { ButtonColorType, ROUTES } from '@/constants/global';
 import { useAppSelector } from '@/store/hooks';
 import { userSelector } from '@/store/selectors';
 import Button from "@/components/Button";
+import { useTranslation } from 'react-i18next';
 
 const aboutUsContent = {
   imgLink:
@@ -20,6 +21,7 @@ const aboutUsContent = {
 
 const AboutUs = () => {
   const user = useAppSelector(userSelector);
+  const { t } = useTranslation();
 
   return (
     <>
@@ -39,11 +41,15 @@ const AboutUs = () => {
       </div>
 
       {!user && <NavLink to={ROUTES.login}>
-        <Button color={ButtonColorType.green}>Go to login</Button>
+        <Button color={ButtonColorType.green}>
+          {t("goTo", { where: 'login' })}
+        </Button>
       </NavLink>}
 
       {user && <NavLink to={ROUTES.games}>
-        <Button color={ButtonColorType.green}>Go to games</Button>
+        <Button color={ButtonColorType.green}>
+          {t("goTo", { where: 'games' })}
+        </Button>
       </NavLink>}
     </>
   );

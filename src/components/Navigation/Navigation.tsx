@@ -1,6 +1,7 @@
 import { memo, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import queryString from "query-string";
+import { useTranslation } from 'react-i18next';
 
 import { getCategories } from '@/store/actions/categories';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
@@ -15,6 +16,7 @@ const Navigation = memo(() => {
   const dispatch = useAppDispatch();
   const redirect = useGenerateSearchUrl();
   const location = useLocation();
+  const { t } = useTranslation();
 
   const { categoryId, search } = queryString.parse(location.search);
 
@@ -33,7 +35,7 @@ const Navigation = memo(() => {
 
   return (
     <div className={cls.wrapper}>
-      <HeaderBlock title="Categories" style={{ marginBottom: "12px" }} />
+      <HeaderBlock title={t("categories")} style={{ marginBottom: "12px" }} />
       <>
         {categories.map((category) => (
           <NavigationItem
