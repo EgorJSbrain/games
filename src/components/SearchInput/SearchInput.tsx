@@ -1,5 +1,6 @@
 import { ChangeEvent, memo } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import queryString from "query-string";
 
 import { useGenerateSearchUrl } from '@/hooks/useGenerateSearchUrl';
@@ -10,6 +11,8 @@ const SearchInput = memo(() => {
   const redirect = useGenerateSearchUrl();
   const location = useLocation();
   const debounce = useDebounce();
+  const { t } = useTranslation();
+
   const { categoryId, search } = queryString.parse(location.search);
 
   const inputHandler = debounce((e: ChangeEvent<HTMLInputElement>) => {
@@ -25,7 +28,7 @@ const SearchInput = memo(() => {
     <Input
       defaultValue={search ?? ""}
       iconLink="./public/search.svg"
-      placeholder="Search game"
+      placeholder={t("searchGame")}
       onChange={inputHandler}
     />
   );

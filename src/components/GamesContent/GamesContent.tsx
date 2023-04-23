@@ -11,11 +11,13 @@ import GameItem from "@/components/GameItem";
 import NothingFound from "@/components/NothingFound";
 
 import cls from './GamesContent.module.css';
+import { useTranslation } from "react-i18next";
 
 const GamesContent = memo(() => {
   const games = useAppSelector(gamesSelector);
   const location = useLocation();
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(getGames());
@@ -34,7 +36,8 @@ const GamesContent = memo(() => {
     }
 
     if (search) {
-      filtredGames = filtredGames.filter(game => game.name.toLowerCase().includes((search as string).toLowerCase()))
+      filtredGames = filtredGames
+        .filter(game => game.name.toLowerCase().includes((search as string).toLowerCase()))
     }
 
     return filtredGames;
@@ -44,7 +47,7 @@ const GamesContent = memo(() => {
   return (
     <div className={cls.wrapper}>
       <main className={cls.gamesList}>
-        <HeaderBlock style={{ marginBottom: '12px' }} title="Games" />
+        <HeaderBlock style={{ marginBottom: '12px' }} title={t("games")} />
 
         {!filtredGames.length && <NothingFound />}
         {!!filtredGames.length && filtredGames.map(game => <GameItem item={game} key={game.code} />)}

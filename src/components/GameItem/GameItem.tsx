@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { GameType } from '@/types/global';
 import { ButtonColorType } from '@/constants/global';
 import { createDomElementForIframe } from '@/utils/createDomElementForIframe';
@@ -10,6 +11,7 @@ interface GameItemProps {
 }
 
 const GameItem = ({ item }: GameItemProps) => {
+  const { t } = useTranslation();
 
   const playGameHandler = () => {
     createDomElementForIframe();
@@ -28,7 +30,7 @@ const GameItem = ({ item }: GameItemProps) => {
         <p className={cls.gameName}>{item.name}</p>
         <p className={cls.description}>{item.description}</p>
         <div className={cls.btnWrapper}>
-          <Button onClick={playGameHandler} color={ButtonColorType.green}>Play</Button>
+          <Button onClick={playGameHandler} color={ButtonColorType.green}>{t("play")}</Button>
         </div>
       </div>
     </div>

@@ -1,0 +1,14 @@
+{
+  "LogIn": "Login",
+  "userName" : "Username",
+  "password" : "Password",
+  "goTo" : "Go to {{where}}",
+  "logout": "Logout",
+  "searchGame": "Search game",
+  "games": "Games",
+  "nothingFound": "Nothing found",
+  "categories": "Categories",
+  "play": "Play",
+  "sorry": "Sorry",
+  "pageNotFound": "PAGE NOT FOUND"
+}

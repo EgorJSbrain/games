@@ -1,4 +1,6 @@
 import { CSSProperties, memo } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { userSelector } from '@/store/selectors';
 import Button from '@/components/Button';
@@ -14,6 +16,7 @@ interface HeaderProps {
 const Header = memo(({ ...props }: HeaderProps) => {
   const user = useAppSelector(userSelector);
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
 
   const logoutHandler = () => {
     const username = user.name.split(' ')[0];
@@ -35,7 +38,7 @@ const Header = memo(({ ...props }: HeaderProps) => {
           </div>
         </div>
 
-        <Button style={{ maxWidth: '96px'}} onClick={logoutHandler}>Logout</Button>
+        <Button style={{ maxWidth: '96px'}} onClick={logoutHandler}>{t("logout")}</Button>
       </div>
 
       <div className={cls.searchBlock}>
